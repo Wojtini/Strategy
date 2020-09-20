@@ -7,6 +7,7 @@ public class Building : Static
     public RecruitmentAbility recruitAbility;
     public GameObject[] recruitableUnits;
 
+    public GameObject voidBuilding;
 
     public GameObject spawnPoint;
 

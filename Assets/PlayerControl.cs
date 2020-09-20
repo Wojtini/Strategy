@@ -82,14 +82,14 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    private void ClearCurrentAbility(Ability ability = null)
+    public void ClearCurrentAbility(Ability ability = null)
     {
         if (currentAbility != null)
         {
             Destroy(currentAbility.gameObject);
             currentAbility = null;
         }
-        else
+        else if(ability != null)
         {
             Destroy(ability.gameObject);
             ability = null;
@@ -101,9 +101,11 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    public void setAbilityCast(Ability ability)
+    public void setAbility(Ability ability)
     {
         currentAbility = ability.CreateNewTask();
+        //Debug.Log(ability);
+        //Debug.Log(ability.confirmationIndicator);
         if (ability.confirmationIndicator != null)
         {
             abilityIndicator = Instantiate(ability.confirmationIndicator);
@@ -112,10 +114,21 @@ public class PlayerControl : MonoBehaviour
 
     private void ActivateAbility(Ability ability)
     {
-        usedAbilityPreviousFrame = true;
-
         Object clickObj = GetObjectUnderCursor();
         Vector3 clickPos = GetPointUnderCursor();
+
+        if (ability is ConstructAbility)
+        {
+            ConstructAbility cA = (ConstructAbility)ability;
+            cA.setTarget(clickPos, clickObj);
+            if (cA.Construct())
+            {
+                ClearCurrentAbility();
+            }
+            return;
+        }
+        usedAbilityPreviousFrame = true;
+
 
         foreach (Object obj in Selection.instance.selectedObjects)
         {

@@ -8,7 +8,7 @@ public class UnitAbility : MonoBehaviour
     public Ability ability = null;
     public Button button;
 
-    public void Start()
+    virtual public void Start()
     {
         button = GetComponent<Button>();
         button.onClick.AddListener(ButtonPress);
@@ -16,7 +16,6 @@ public class UnitAbility : MonoBehaviour
 
     public void SetSlot(Ability ab)
     {
-        Debug.Log(ab);
         ability = ab;
         button.image.sprite = ab.icon;
     }
@@ -29,11 +28,12 @@ public class UnitAbility : MonoBehaviour
 
     public void ButtonPress()
     {
+        PlayerControl.instance.ClearCurrentAbility();
         if (ability == null)
             return;
         if (ability.requireConfirmation)
         {
-            PlayerControl.instance.setAbilityCast(ability);
+            PlayerControl.instance.setAbility(ability);
         }
         else
         {

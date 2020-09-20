@@ -138,7 +138,6 @@ public class Object : MonoBehaviour
             if (!(this is Mobile))
                 return false;
         }
-        Debug.Log(this + " has requirements");
         //Check Requirements
         return true;
     }

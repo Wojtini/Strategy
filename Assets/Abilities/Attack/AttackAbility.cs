@@ -22,7 +22,7 @@ public class AttackAbility : Ability
     {
         if (targetObject != null)
         {
-            Debug.Log(Vector3.Distance(unit.transform.position, targetObject.transform.position) + " i " + unit.attackRange + targetObject.size);
+            //Debug.Log(Vector3.Distance(unit.transform.position, targetObject.transform.position) + " i " + unit.attackRange + targetObject.size);
             if (Vector3.Distance(unit.transform.position, targetObject.transform.position) <= unit.attackRange + targetObject.size)
             {
                 unit.AttackTarget(targetObject);

@@ -22,7 +22,7 @@ public class UI_MainSelect : MonoBehaviour
 
     public void SetUnit(Object obj)
     {
-        Debug.Log(obj);
+        //Debug.Log(obj);
         if(obj == null)
         {
             return;

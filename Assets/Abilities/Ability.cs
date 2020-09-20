@@ -27,9 +27,9 @@ public class Ability : MonoBehaviour
     public int healthRequirement = 0;
     public int manaRequirement = 0;
 
-    public void Start()
+    virtual public void Start()
     {
-        //requiredAbilities.Add(this);
+        requiredAbilities.Add(this);
     }
 
     virtual public Ability CreateNewTask()
