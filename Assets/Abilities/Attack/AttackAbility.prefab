@@ -50,7 +50,8 @@ MonoBehaviour:
     type: 3}
   target: {x: 0, y: 0, z: 0}
   targetObject: {fileID: 0}
-  requiredAbilities: []
+  requiredAbilities:
+  - {fileID: -1332759133705143441, guid: 1bf510db2ecf1f44db34992135da94bb, type: 3}
   requireMobile: 0
   requireUnit: 1
   requireBuilding: 0

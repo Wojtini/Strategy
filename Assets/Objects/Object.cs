@@ -82,25 +82,11 @@ public class Object : MonoBehaviour
 
     virtual public void addTask(Ability ability,int priority = -1)
     {
-        bool canPerform = true;
-        //Start checking requirements
-
-        //Check if unit has ability (problem with all selected units)
-    //    foreach (Ability a in abilitycast.requiredAbilities)
-    //    {
-    //       if (!(this.abilities.Contains(a) && CheckRequirements(ability)))
-    //        {
-    //            Debug.Log(this + " cant perform");
-    //            canPerform = false;
-    //        }
-    //    }
-        //End checking requirements
-        if (canPerform)
+        if (CheckRequirements(ability))
         {
             if (priority != -1)
             {
                 taskList.Insert(priority, ability);
-                //Debug.Break();
             }
             else
             {
@@ -119,6 +105,23 @@ public class Object : MonoBehaviour
 
     virtual public bool CheckRequirements(Ability ability)
     {
+        //Start checking requirements
+        //Check if unit has ability (problem with all selected units)
+        foreach(Ability reqAbility in ability.requiredAbilities)
+        {
+            bool foundAbility = false;
+            foreach(Ability availableAbility in this.abilities)
+            {
+                if(availableAbility.abilityName == reqAbility.abilityName)
+                {
+                    foundAbility = true;
+                }
+            }
+            if (!foundAbility)
+            {
+                return false;
+            }
+        }
         //Check is object type is good
         if (ability.requireBuilding)
         {

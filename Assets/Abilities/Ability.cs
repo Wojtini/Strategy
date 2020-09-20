@@ -13,7 +13,7 @@ public class Ability : MonoBehaviour
 
     public Vector3 target; //Zawsze jest
     public Object targetObject; //Nie zawsze jest
-    public Ability[] requiredAbilities;
+    public List<Ability> requiredAbilities = new List<Ability>();
 
     [Header("Type of unit requirement")]
     public bool requireMobile = false;
@@ -26,6 +26,11 @@ public class Ability : MonoBehaviour
     [Header("Unit Requirements")]
     public int healthRequirement = 0;
     public int manaRequirement = 0;
+
+    public void Start()
+    {
+        //requiredAbilities.Add(this);
+    }
 
     virtual public Ability CreateNewTask()
     {
