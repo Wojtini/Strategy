@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1409914652975490749
+--- !u!1 &1768051620976544550
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,50 +8,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3937991793211043436}
-  - component: {fileID: 3583323636492807934}
+  - component: {fileID: 3935913695013879692}
+  - component: {fileID: 3041025848367386622}
   m_Layer: 0
-  m_Name: AttackAbility
+  m_Name: RepairAbility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3937991793211043436
+--- !u!4 &3935913695013879692
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1409914652975490749}
+  m_GameObject: {fileID: 1768051620976544550}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8709499, y: 35.064686, z: -51.651844}
+  m_LocalPosition: {x: 5.0600863, y: 10.632511, z: -6.0523944}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3583323636492807934
+--- !u!114 &3041025848367386622
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1409914652975490749}
+  m_GameObject: {fileID: 1768051620976544550}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a11cd8a5db2d251478951ffeb5158691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityName: Attack
-  icon: {fileID: 21300000, guid: c70ddb2a3b04f9c4393896b2cdcbcf1a, type: 3}
+  abilityName: Repair
+  icon: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
   requireConfirmation: 1
-  confirmationIndicator: {fileID: 2146825952144583531, guid: b6b14c91f094ec649bc2a2e1e3635888,
-    type: 3}
+  confirmationIndicator: {fileID: 0}
   target: {x: 0, y: 0, z: 0}
   targetObject: {fileID: 0}
   requiredAbilities:
-  - {fileID: 3583323636492807934}
+  - {fileID: 3041025848367386622}
   - {fileID: -1332759133705143441, guid: 1bf510db2ecf1f44db34992135da94bb, type: 3}
   requireMobile: 1
   requireUnit: 1
@@ -62,4 +61,4 @@ MonoBehaviour:
   manaRequirement: 0
   moveability: {fileID: -1332759133705143441, guid: 1bf510db2ecf1f44db34992135da94bb,
     type: 3}
-  isRepairingAbility: 0
+  isRepairingAbility: 1

@@ -45,7 +45,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Recruit
   icon: {fileID: 21300000, guid: 6f36a1d66eb046e4e8e01ade7ec6340b, type: 3}
-  abilityCast: {fileID: 2637384102091455145, guid: 3b62c4552c012d9488e836f213b4d506,
-    type: 3}
   requireConfirmation: 0
   confirmationIndicator: {fileID: 0}
+  target: {x: 0, y: 0, z: 0}
+  targetObject: {fileID: 0}
+  requiredAbilities:
+  - {fileID: 9018654634757933684}
+  requireMobile: 0
+  requireUnit: 0
+  requireBuilding: 0
+  goldRequirement: 0
+  woodRequirement: 0
+  healthRequirement: 0
+  manaRequirement: 0
+  unitToRecruit: {fileID: 6282018038068913569, guid: 4943acc9535cc4b4596f51bada6e98b8,
+    type: 3}

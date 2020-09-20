@@ -74,10 +74,11 @@ public class Object : MonoBehaviour
     virtual public void healDamage(int amount)
     {
         healthPoints += amount;
-        if (healthPoints < maxhealthPoints)
+        if (healthPoints > maxhealthPoints)
         {
             healthPoints = maxhealthPoints;
         }
+        UI_MainSelect.instance.UpdateUnit();
     }
 
     virtual public void addTask(Ability ability,int priority = -1)
@@ -110,15 +111,19 @@ public class Object : MonoBehaviour
         foreach(Ability reqAbility in ability.requiredAbilities)
         {
             bool foundAbility = false;
+            Debug.Log("Sprawdzam czy unit zawiera: " + reqAbility.abilityName);
             foreach(Ability availableAbility in this.abilities)
             {
-                if(availableAbility.abilityName == reqAbility.abilityName)
+                Debug.Log("Aktualne ability: " + availableAbility.abilityName);
+                if (availableAbility.abilityName == reqAbility.abilityName)
                 {
+                    Debug.Log("Znalazlem: " + availableAbility.abilityName);
                     foundAbility = true;
                 }
             }
             if (!foundAbility)
             {
+                Debug.Log("Nie znalazlem: " + reqAbility.abilityName);
                 return false;
             }
         }

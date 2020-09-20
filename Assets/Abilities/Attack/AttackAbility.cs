@@ -5,7 +5,7 @@ using UnityEngine;
 public class AttackAbility : Ability
 {
     public MoveAbility moveability;
-
+    public bool isRepairingAbility = false;
     // Start is called before the first frame update
     override public bool Perform(Object obj)
     {
@@ -25,7 +25,7 @@ public class AttackAbility : Ability
             //Debug.Log(Vector3.Distance(unit.transform.position, targetObject.transform.position) + " i " + unit.attackRange + targetObject.size);
             if (Vector3.Distance(unit.transform.position, targetObject.transform.position) <= unit.attackRange + targetObject.size)
             {
-                unit.AttackTarget(targetObject);
+                unit.TargetObject(targetObject, isRepairingAbility);
             }
             else
             {

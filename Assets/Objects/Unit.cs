@@ -54,12 +54,20 @@ public class Unit : Mobile
         return closestEnemy;
     }
 
-    public void AttackTarget(Object obj)
+    public void TargetObject(Object obj,bool isRepairing = false)
     {
         if (attackCooldown <= 0)
         {
-            Debug.Log("Atakuje: " + obj);
-            obj.dealDamage(attackDamage);
+            if (!isRepairing)
+            {
+                Debug.Log("Atakuje: " + obj);
+                obj.dealDamage(attackDamage);
+            }
+            else
+            {
+                Debug.Log("Naprawiam: " + obj);
+                obj.healDamage(attackDamage);
+            }
             attackCooldown = attackSpeed;
             //Widoczki + blokowanie mozliwosci ruchu podczas i w trakcie trwania cd ataku
             agent.speed = 0;

@@ -19,7 +19,6 @@ public class Ability : MonoBehaviour
     public bool requireMobile = false;
     public bool requireUnit = false;
     public bool requireBuilding = false;
-    public bool requireWorker = false;
     [Header("Ability Requirements")]
     public int goldRequirement = 0;
     public int woodRequirement = 0;
@@ -29,7 +28,7 @@ public class Ability : MonoBehaviour
 
     virtual public void Start()
     {
-        requiredAbilities.Add(this);
+        //requiredAbilities.Add(this);
     }
 
     virtual public Ability CreateNewTask()

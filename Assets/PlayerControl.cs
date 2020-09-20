@@ -20,6 +20,7 @@ public class PlayerControl : MonoBehaviour
     [Header("Basic Tasks")]
     public Ability BasicMove;
     public Ability BasicAttack;
+    public Ability BasicRepair;
 
 
     // Start is called before the first frame update
@@ -71,7 +72,8 @@ public class PlayerControl : MonoBehaviour
             {
                 if(obj.Faction == PlayerFaction)
                 {
-                    //Repair
+                    Ability abilitycast = BasicRepair.CreateNewTask();
+                    ActivateAbility(abilitycast);
                 }
                 else
                 {
