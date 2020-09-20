@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7754015765561363944
+--- !u!1 &2975232668180631442
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,55 +8,56 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5714064057790346981}
-  - component: {fileID: 9018654634757933684}
+  - component: {fileID: 268494045130627641}
+  - component: {fileID: 3382127970484482353}
   m_Layer: 0
-  m_Name: RecruitAbility
+  m_Name: HarvestAbility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5714064057790346981
+--- !u!4 &268494045130627641
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7754015765561363944}
+  m_GameObject: {fileID: 2975232668180631442}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 254.13602, y: -187.50702, z: 340.93427}
+  m_LocalPosition: {x: 5.0600863, y: 10.632511, z: -6.0523944}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9018654634757933684
+--- !u!114 &3382127970484482353
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7754015765561363944}
+  m_GameObject: {fileID: 2975232668180631442}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f3582196041bc645aac826e0f713fbc, type: 3}
+  m_Script: {fileID: 11500000, guid: 87a90fc6b6851e043ac713022c14bf00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityName: Recruit
-  icon: {fileID: 21300000, guid: 6f36a1d66eb046e4e8e01ade7ec6340b, type: 3}
-  requireConfirmation: 0
+  abilityName: 
+  icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  requireConfirmation: 1
   confirmationIndicator: {fileID: 0}
   target: {x: 0, y: 0, z: 0}
   targetObject: {fileID: 0}
   requiredAbilities:
-  - {fileID: 9018654634757933684}
-  requireMobile: 0
-  requireUnit: 0
+  - {fileID: 3382127970484482353}
+  - {fileID: -1332759133705143441, guid: 1bf510db2ecf1f44db34992135da94bb, type: 3}
+  requireMobile: 1
+  requireUnit: 1
   requireBuilding: 0
-  goldRequirement: 10
-  woodRequirement: 10
+  goldRequirement: 0
+  woodRequirement: 0
   healthRequirement: 0
   manaRequirement: 0
-  unitToRecruit: {fileID: 6282018038068913569, guid: 4943acc9535cc4b4596f51bada6e98b8,
+  moveability: {fileID: -1332759133705143441, guid: 1bf510db2ecf1f44db34992135da94bb,
     type: 3}

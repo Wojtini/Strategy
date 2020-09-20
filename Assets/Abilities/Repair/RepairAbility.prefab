@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3935913695013879692}
-  - component: {fileID: 3041025848367386622}
+  - component: {fileID: -5670708332041488207}
   m_Layer: 0
   m_Name: RepairAbility
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3041025848367386622
+--- !u!114 &-5670708332041488207
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,7 +40,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1768051620976544550}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a11cd8a5db2d251478951ffeb5158691, type: 3}
+  m_Script: {fileID: 11500000, guid: 079fd0c0685e7ca4e822b94b86b2b73d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: Repair
@@ -50,7 +50,7 @@ MonoBehaviour:
   target: {x: 0, y: 0, z: 0}
   targetObject: {fileID: 0}
   requiredAbilities:
-  - {fileID: 3041025848367386622}
+  - {fileID: -5670708332041488207}
   - {fileID: -1332759133705143441, guid: 1bf510db2ecf1f44db34992135da94bb, type: 3}
   requireMobile: 1
   requireUnit: 1
@@ -61,4 +61,3 @@ MonoBehaviour:
   manaRequirement: 0
   moveability: {fileID: -1332759133705143441, guid: 1bf510db2ecf1f44db34992135da94bb,
     type: 3}
-  isRepairingAbility: 1

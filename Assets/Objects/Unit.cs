@@ -54,20 +54,38 @@ public class Unit : Mobile
         return closestEnemy;
     }
 
-    public void TargetObject(Object obj,bool isRepairing = false)
+    public void AttackObject(Object obj)
     {
         if (attackCooldown <= 0)
         {
-            if (!isRepairing)
-            {
-                Debug.Log("Atakuje: " + obj);
-                obj.dealDamage(attackDamage);
-            }
-            else
-            {
-                Debug.Log("Naprawiam: " + obj);
-                obj.healDamage(attackDamage);
-            }
+            Debug.Log("Atakuje: " + obj);
+            obj.dealDamage(attackDamage);
+            attackCooldown = attackSpeed;
+            //Widoczki + blokowanie mozliwosci ruchu podczas i w trakcie trwania cd ataku
+            agent.speed = 0;
+            this.gameObject.transform.LookAt(obj.transform);
+        }
+    }
+
+    public void HealObject(Object obj)
+    {
+        if (attackCooldown <= 0)
+        {
+            Debug.Log("Healuje: " + obj);
+            obj.healDamage(attackDamage);
+            attackCooldown = attackSpeed;
+            //Widoczki + blokowanie mozliwosci ruchu podczas i w trakcie trwania cd ataku
+            agent.speed = 0;
+            this.gameObject.transform.LookAt(obj.transform);
+        }
+    }
+
+    public void HarvestObject(Resource obj)
+    {
+        if (attackCooldown <= 0)
+        {
+            Debug.Log("Harvestuje: " + obj);
+            obj.Gather(attackDamage);
             attackCooldown = attackSpeed;
             //Widoczki + blokowanie mozliwosci ruchu podczas i w trakcie trwania cd ataku
             agent.speed = 0;

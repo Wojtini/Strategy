@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Resource : Static
 {
-    public string resource;
     public int stock;
+
+    virtual public void Gather(int amount)
+    {
+        stock -= amount;
+    }
 }

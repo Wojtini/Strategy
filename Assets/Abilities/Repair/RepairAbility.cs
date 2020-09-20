@@ -2,47 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackAbility : Ability
+public class RepairAbility : Ability
 {
     public MoveAbility moveability;
-    public bool isRepairingAbility = false;
     // Start is called before the first frame update
     override public bool Perform(Object obj)
     {
-        UnitAttack((Unit)obj);
-        if (targetObject == null)
+        if (targetObject == null) //if targeted object disappeared ie. Killed return completed task (true)
         {
             return true;
         }
+        UnitRepair((Unit)obj);
 
         return false;
     }
 
-    private void UnitAttack(Unit unit)
+    private void UnitRepair(Unit unit)
     {
-        if (targetObject != null)
-        {
             //Debug.Log(Vector3.Distance(unit.transform.position, targetObject.transform.position) + " i " + unit.attackRange + targetObject.size);
             if (Vector3.Distance(unit.transform.position, targetObject.transform.position) <= unit.attackRange + targetObject.size)
             {
-                unit.AttackObject(targetObject);
+                unit.HealObject(targetObject);
             }
             else
             {
                 unit.agent.SetDestination(targetObject.transform.position);
             }
-        }
-        else
-        {
-            AttackMove(unit);
-        }
-
     }
-
-    private void AttackMove(Unit obj) //each frame ale na start dodaje wiec git
-    {
-        MoveAbility move = Instantiate(moveability);
-        move.setTarget(target, obj, true);
-        obj.addTask(move, 1);
-    }
+    
 }

@@ -111,19 +111,19 @@ public class Object : MonoBehaviour
         foreach(Ability reqAbility in ability.requiredAbilities)
         {
             bool foundAbility = false;
-            Debug.Log("Sprawdzam czy unit zawiera: " + reqAbility.abilityName);
+            //Debug.Log("Sprawdzam czy unit zawiera: " + reqAbility.abilityName);
             foreach(Ability availableAbility in this.abilities)
             {
-                Debug.Log("Aktualne ability: " + availableAbility.abilityName);
+                //Debug.Log("Aktualne ability: " + availableAbility.abilityName);
                 if (availableAbility.abilityName == reqAbility.abilityName)
                 {
-                    Debug.Log("Znalazlem: " + availableAbility.abilityName);
+                    //Debug.Log("Znalazlem: " + availableAbility.abilityName);
                     foundAbility = true;
                 }
             }
             if (!foundAbility)
             {
-                Debug.Log("Nie znalazlem: " + reqAbility.abilityName);
+                //Debug.Log("Nie znalazlem: " + reqAbility.abilityName);
                 return false;
             }
         }
@@ -143,7 +143,17 @@ public class Object : MonoBehaviour
             if (!(this is Mobile))
                 return false;
         }
-        //Check Requirements
+        //Check Requirements Resources
+        PlayerResources PR = PlayerResources.instance;
+        if (ability.woodRequirement > PR.WoodAmount || ability.goldRequirement > PR.GoldAmount)
+        {
+            return false;
+            //Not enough resources
+        }
+        //Costing
+        PR.WoodAmount -= ability.woodRequirement;
+        PR.GoldAmount -= ability.goldRequirement;
+
         return true;
     }
 

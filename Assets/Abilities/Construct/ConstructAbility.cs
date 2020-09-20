@@ -15,7 +15,9 @@ public class ConstructAbility : Ability
     {
         GameObject newBuilding = Instantiate(building);
         newBuilding.transform.position = target;
-        newBuilding.GetComponent<Building>().healthPoints = 1;
+        Building newBuildingComp = newBuilding.GetComponent<Building>();
+        newBuildingComp.Faction = PlayerControl.instance.PlayerFaction;
+        newBuildingComp.healthPoints = 1;
         return true;
     }
 }

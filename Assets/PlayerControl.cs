@@ -21,6 +21,7 @@ public class PlayerControl : MonoBehaviour
     public Ability BasicMove;
     public Ability BasicAttack;
     public Ability BasicRepair;
+    public Ability BasicHarverst;
 
 
     // Start is called before the first frame update
@@ -73,6 +74,11 @@ public class PlayerControl : MonoBehaviour
                 if(obj.Faction == PlayerFaction)
                 {
                     Ability abilitycast = BasicRepair.CreateNewTask();
+                    ActivateAbility(abilitycast);
+                }
+                else if (obj.Faction == "RESOURCE")
+                {
+                    Ability abilitycast = BasicHarverst.CreateNewTask();
                     ActivateAbility(abilitycast);
                 }
                 else
