@@ -15,7 +15,8 @@ public class Selection : MonoBehaviour
     public static Selection instance;
 
     public List<Object> selectedObjects = new List<Object>();
-
+    //For unwanted selectionbox spawn
+    private bool wasObjectSelectedLastMouseDownInput = false;
     //Selection Box stuff
     public Vector2 startPos;
     public RectTransform selectionRect;
@@ -37,28 +38,35 @@ public class Selection : MonoBehaviour
             return;
         }
         HandleGroup();
-        SelectionBox();
+        if (!wasObjectSelectedLastMouseDownInput)
+        {
+            SelectionBox();
+        }
+
         if (EventSystem.current.IsPointerOverGameObject())
         {
             return;
         }
+        TrySelect();
+    }
 
-        if (Input.GetKeyUp(KeyCode.Mouse0))
+    private void TrySelect()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Object pom = GetObjectUnderCursor();
             if (pom != null)
             {
                 if (Input.GetKey(KeyCode.LeftShift))
                 {
-                    if (!selectedObjects.Contains(pom))
-                    {
                         AddObject(pom);
-                    }
+                        wasObjectSelectedLastMouseDownInput = true;
                 }
                 else
                 {
                     ClearSelection();
                     AddObject(pom);
+                    wasObjectSelectedLastMouseDownInput = true;
                 }
             }
             else
@@ -66,6 +74,12 @@ public class Selection : MonoBehaviour
                 if (!Input.GetKey(KeyCode.LeftShift))
                 {
                     ClearSelection();
+                    wasObjectSelectedLastMouseDownInput = false;
+                    //Didnt select any object in this case but we 
+                }
+                else
+                {
+                    wasObjectSelectedLastMouseDownInput = false;
                 }
             }
         }
@@ -108,7 +122,7 @@ public class Selection : MonoBehaviour
             float height = Input.mousePosition.y - startPos.y;
 
             selectionRect.sizeDelta = new Vector2(Mathf.Abs(width), Mathf.Abs(height));
-            selectionRect.position = startPos + new Vector2(width / 2, height / 2);
+            selectionRect.anchoredPosition = startPos + new Vector2(width / 2, height / 2);
         }
         if (Input.GetMouseButtonUp(0) && isDrawingSelectBox)
         {
@@ -117,7 +131,7 @@ public class Selection : MonoBehaviour
             Vector2 min = selectionRect.anchoredPosition - (selectionRect.sizeDelta / 2);
             Vector2 max = selectionRect.anchoredPosition + (selectionRect.sizeDelta / 2);
 
-            if (!Input.GetKey(KeyCode.LeftControl))
+            if (!Input.GetKey(KeyCode.LeftShift))
             {
                 Selection.instance.ClearSelection();
             }
@@ -127,6 +141,7 @@ public class Selection : MonoBehaviour
                 if (screenpos.x > min.x && screenpos.x < max.x && screenpos.y > min.y && screenpos.y < max.y)
                 {
                     Selection.instance.AddObject(unit);
+
                 }
             }
             timePressedButton = 0f;
@@ -198,7 +213,8 @@ public class Selection : MonoBehaviour
 
     public void AddObject(Object obj)
     {
-        obj.toggleSelection(true);
+        if (selectedObjects.Contains(obj))
+            return;
         selectedObjects.Add(obj);
 
         if (onItemSelectionChange != null)
@@ -207,7 +223,6 @@ public class Selection : MonoBehaviour
 
     public void RemoveObject(Object obj)
     {
-        obj.toggleSelection(false);
         selectedObjects.Remove(obj);
 
         if(onItemSelectionChange != null)
@@ -221,10 +236,6 @@ public class Selection : MonoBehaviour
 
     public void ClearSelection()
     {
-        foreach(Object obj in selectedObjects)
-        {
-            obj.toggleSelection(false);
-        }
         selectedObjects = new List<Object>();
 
         if (onItemSelectionChange != null)

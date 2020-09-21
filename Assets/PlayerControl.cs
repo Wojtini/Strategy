@@ -146,7 +146,7 @@ public class PlayerControl : MonoBehaviour
         ClearCurrentAbility(ability);
     }
     //
-    private Object GetObjectUnderCursor()
+    public Object GetObjectUnderCursor()
     {
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -154,15 +154,12 @@ public class PlayerControl : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
         {
             Object pom = hit.transform.GetComponent<Object>();
-            if (pom != null)
-            {
-                return pom;
-            }
+            return pom;
         }
         return null;
     }
 
-    private Vector3 GetPointUnderCursor()
+    public Vector3 GetPointUnderCursor()
     {
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;

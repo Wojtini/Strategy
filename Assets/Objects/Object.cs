@@ -15,8 +15,7 @@ public class Object : MonoBehaviour
     public Sprite icon;
     public string Faction = "NONE";
     public float size = 0f;
-
-    public Image selectioncircle;
+    
     //public bool isSelected = false;
 
     [Header("Object Stats")]
@@ -30,8 +29,6 @@ public class Object : MonoBehaviour
     virtual public void Start()
     {
         Map.instance.onObjectSpawn(this);
-        selectioncircle = GetComponentInChildren<Image>();
-        toggleSelection(false);
     }
 
     void OnDrawGizmosSelected()
@@ -96,10 +93,12 @@ public class Object : MonoBehaviour
                     this.clearTaskList();
                 }
                 taskList.Add(ability);
+                Debug.Log("Dodano taska" + ability);
             }
         }
         else
         {
+            Debug.Log("Objekt nie splnia wymagan" + ability);
             Destroy(ability.gameObject);
         }
     }
@@ -177,13 +176,5 @@ public class Object : MonoBehaviour
 
         return str;
     }
-
-    virtual public void toggleSelection(bool toggle)
-    {
-        if (selectioncircle == null)
-        {
-            return;
-        }
-        selectioncircle.enabled = toggle;
-    }
+    
 }
