@@ -1561,15 +1561,24 @@ PrefabInstance:
       propertyPath: m_Text
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4382619122170025462, guid: c30bd8e0be8dbea4fbc71c084f9a511d,
+    - target: {fileID: 5711964068231333359, guid: c30bd8e0be8dbea4fbc71c084f9a511d,
         type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 91ce8485a14e3fa49aadd1aeaf255d81,
-        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7256028321884989341, guid: c30bd8e0be8dbea4fbc71c084f9a511d,
         type: 3}
       propertyPath: m_Text
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8079579836493124242, guid: c30bd8e0be8dbea4fbc71c084f9a511d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8079579836493124242, guid: c30bd8e0be8dbea4fbc71c084f9a511d,
+        type: 3}
+      propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8961312202349735361, guid: c30bd8e0be8dbea4fbc71c084f9a511d,
@@ -1636,6 +1645,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961312202349735370, guid: c30bd8e0be8dbea4fbc71c084f9a511d,
+        type: 3}
+      propertyPath: GoldAmount
+      value: 750
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961312202349735370, guid: c30bd8e0be8dbea4fbc71c084f9a511d,
+        type: 3}
+      propertyPath: WoodAmount
+      value: 913
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c30bd8e0be8dbea4fbc71c084f9a511d, type: 3}

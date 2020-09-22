@@ -90,7 +90,10 @@ public class Object : MonoBehaviour
             {
                 if (!Input.GetKey(KeyCode.LeftControl))
                 {
-                    this.clearTaskList();
+                    if(!(this is Building))
+                    {
+                        this.clearTaskList();
+                    }
                 }
                 taskList.Add(ability);
                 Debug.Log("Dodano taska" + ability);
@@ -100,6 +103,14 @@ public class Object : MonoBehaviour
         {
             Debug.Log("Objekt nie splnia wymagan" + ability);
             Destroy(ability.gameObject);
+        }
+    }
+
+    virtual public void CancelTask(int index)
+    {
+        if(index < taskList.Count)
+        {
+            taskList.RemoveAt(index);
         }
     }
 
