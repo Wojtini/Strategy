@@ -141,7 +141,10 @@ public class PlayerControl : MonoBehaviour
         foreach (Object obj in Selection.instance.selectedObjects)
         {
             ability.setTarget(clickPos, clickObj);
-            obj.addTask(Instantiate(ability));
+
+            Ability newAbility = Instantiate(ability);
+            obj.addTask(newAbility);
+            newAbility.transform.parent = obj.transform;
         }
         ClearCurrentAbility(ability);
     }
