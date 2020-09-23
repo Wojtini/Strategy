@@ -6,7 +6,7 @@ namespace RTS_Cam
 {
     [RequireComponent(typeof(Camera))]
     [AddComponentMenu("RTS Camera")]
-    public class RTS_Camera : NetworkBehaviour
+    public class RTS_Camera : MonoBehaviour
     {
 
         #region Foldouts
@@ -173,16 +173,12 @@ namespace RTS_Cam
 
         private void Update()
         {
-            if (!base.isLocalPlayer)
-                return;
             if (!useFixedUpdate)
                 CameraUpdate();
         }
 
         private void FixedUpdate()
         {
-            if (!base.isLocalPlayer)
-                return;
             if (useFixedUpdate)
                 CameraUpdate();
         }

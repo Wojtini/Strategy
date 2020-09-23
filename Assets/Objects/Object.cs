@@ -1,10 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEditor;
+using UnityEngine.Networking;
 
-public class Object : MonoBehaviour
+public class Object : NetworkBehaviour
 {
     [Header("Task List")]
     public List<Ability> taskList = new List<Ability>();
