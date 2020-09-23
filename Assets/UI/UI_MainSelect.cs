@@ -34,7 +34,6 @@ public class UI_MainSelect : MonoBehaviour
     {
         //things that dont change at runtime
         currobj = obj;
-        Icon.sprite = currobj.icon;
         NameText.text = currobj.displayName.ToString();
         mainSlotAbilities.SetUnit(currobj);
         StatsText.text = currobj.getStringStats();
@@ -48,6 +47,7 @@ public class UI_MainSelect : MonoBehaviour
             return;
         }
         HpText.text = currobj.healthPoints.ToString() + "/" + currobj.maxhealthPoints.ToString();
+        Icon.sprite = currobj.icon;
         if (currobj is Building)
         {
             UpdateProgressBar((Building)currobj);

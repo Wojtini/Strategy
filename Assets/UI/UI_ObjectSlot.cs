@@ -9,11 +9,34 @@ public class UI_ObjectSlot : MonoBehaviour
     public Image image;
     public Object obj;
 
+    public Slider hpBar;
+
     public void Awake()
     {
         button = GetComponent<Button>();
         image = button.image;
         button.onClick.AddListener(ButtonPress);
+        hpBar = GetComponentInChildren<Slider>();
+    }
+
+    public void Update()
+    {
+        UpdateUI();
+    }
+
+    private void UpdateUI()
+    {
+        if(obj != null)
+        {
+            float hp = (float) obj.healthPoints / (float) obj.maxhealthPoints;
+            Debug.Log(hp);
+            hpBar.value = hp;
+            hpBar.gameObject.SetActive(true);
+        }
+        else
+        {
+            hpBar.gameObject.SetActive(false);
+        }
     }
 
     public void ClearSlot()

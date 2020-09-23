@@ -17,6 +17,7 @@ public class Building : Static
         {
             Ability newAbility = Instantiate(recruitAbility);
             recruitAbility.unitToRecruit = gameobject;
+            newAbility.transform.parent = this.transform;
             this.abilities.Add(newAbility);
         }
         base.Start();
