@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class UI_MainSelect : MonoBehaviour
 {
-    public static UI_MainSelect instance;
-
     public Object currobj;
     public Image Icon;
     public Text HpText;
@@ -21,13 +19,13 @@ public class UI_MainSelect : MonoBehaviour
 
     public void Start()
     {
-        instance = this;
         buildingProduction.gameObject.SetActive(false);
     }
 
     public void Update()
     {
         UpdateMainUnitUI();
+        UpdateUnit();
     }
 
     public void SetUnit(Object obj)
@@ -86,7 +84,8 @@ public class UI_MainSelect : MonoBehaviour
 
     public void UpdateUnit()
     {
-        SetUnit(currobj);
+        if(currobj != null)
+            SetUnit(currobj);
     }
 
     public void ClearUnit()

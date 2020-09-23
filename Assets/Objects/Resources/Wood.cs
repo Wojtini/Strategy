@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Wood : Resource
 {
-    public override void Gather(int amount)
+    public override void Gather(PlayerResources playerresources, int amount)
     {
-        base.Gather(amount);
-        PlayerResources.instance.addWood(amount);
+        base.Gather(playerresources,amount);
+        playerresources.addWood(amount);
     }
 }

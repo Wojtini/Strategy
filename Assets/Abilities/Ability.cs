@@ -10,6 +10,8 @@ public class Ability : MonoBehaviour
     public bool requireConfirmation = true;
 
     public GameObject confirmationIndicator;
+    public PlayerControl playerControl;
+    public string factionCasted = "";
 
     public Vector3 target; //Zawsze jest
     public Object targetObject; //Nie zawsze jest
@@ -31,8 +33,9 @@ public class Ability : MonoBehaviour
         //requiredAbilities.Add(this);
     }
 
-    virtual public Ability CreateNewTask()
+    virtual public Ability CreateNewTask(PlayerControl playerControl)
     {
+        setFaction(playerControl, playerControl.PlayerFaction);
         return Instantiate(this);
     }
 
@@ -45,5 +48,11 @@ public class Ability : MonoBehaviour
     virtual public bool Perform(Object obj) //return true upon task completion/cancelation.  After true is returned object moves to another task.
     {
         return true;
+    }
+
+    virtual public void setFaction(PlayerControl playerControl,string faction)
+    {
+        this.playerControl = playerControl;
+        factionCasted = faction;
     }
 }

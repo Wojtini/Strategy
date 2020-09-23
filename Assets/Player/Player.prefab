@@ -82,8 +82,9 @@ GameObject:
   - component: {fileID: 8961312202349735365}
   - component: {fileID: 8961312202349735370}
   - component: {fileID: 8961312202349735371}
+  - component: {fileID: 4706880100121124786}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Player
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -176,6 +177,8 @@ MonoBehaviour:
   cam: {fileID: 0}
   usedAbilityPreviousFrame: 0
   PlayerFaction: BLUE
+  selection: {fileID: 0}
+  playerResources: {fileID: 0}
   currentAbility: {fileID: 0}
   BasicMove: {fileID: -1332759133705143441, guid: 1bf510db2ecf1f44db34992135da94bb,
     type: 3}
@@ -200,6 +203,7 @@ MonoBehaviour:
   slots: []
   slotsParent: {fileID: 2232850799508471855}
   selection: {fileID: 0}
+  mainSelect: {fileID: 2232850799963994033}
 --- !u!114 &8961312202349735365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,6 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstGroup: []
   secondGroup: []
+  playerControl: {fileID: 0}
   selectedObjects: []
   startPos: {x: 0, y: 0}
   selectionRect: {fileID: 2232850799408977137}
@@ -232,8 +237,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b932e505eb14f6540a7f95660494fe9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GoldAmount: 0
-  WoodAmount: 0
+  GoldAmount: 500
+  WoodAmount: 500
   UIgoldText: {fileID: 2890802063173373422}
   UItreeText: {fileID: 7256028321884989341}
 --- !u!114 &8961312202349735371
@@ -294,6 +299,39 @@ MonoBehaviour:
   rotateLeftKey: 122
   useMouseRotation: 1
   mouseRotationKey: 324
+--- !u!114 &4706880100121124786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8961312202349735363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8258ea15b8f74c4889ce485d21cbbb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 0
+    i1: 0
+    i2: 0
+    i3: 0
+    i4: 0
+    i5: 0
+    i6: 0
+    i7: 0
+    i8: 0
+    i9: 0
+    i10: 0
+    i11: 0
+    i12: 0
+    i13: 0
+    i14: 0
+    i15: 0
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
 --- !u!1001 &1817862309896695415
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1313,7 +1351,7 @@ PrefabInstance:
     - target: {fileID: 6248829112268843191, guid: 5a3fba11671a371459b644cc9282a77e,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -50
+      value: 405.3
       objectReference: {fileID: 0}
     - target: {fileID: 6248829112268843191, guid: 5a3fba11671a371459b644cc9282a77e,
         type: 3}
@@ -1823,6 +1861,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 5207534461943621785}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2232850799963994033 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6248829112883732264, guid: 5a3fba11671a371459b644cc9282a77e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5207534461943621785}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d8ba41d6608efc46934c46e1f8e1ee1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2232850799508471855 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6248829112268843190, guid: 5a3fba11671a371459b644cc9282a77e,

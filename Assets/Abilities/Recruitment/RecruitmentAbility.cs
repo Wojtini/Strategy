@@ -14,6 +14,8 @@ public class RecruitmentAbility : Ability
         {
             Building building = (Building)obj;
             GameObject newUnit = Instantiate(unitToRecruit);
+            Unit newUnitComp = newUnit.GetComponent<Unit>();
+            newUnitComp.SetOwner(playerControl, factionCasted);
             newUnit.transform.position = building.spawnPoint.transform.position;
             newUnit.transform.localScale = new Vector3(1f, 1f, 1f);
             return true;

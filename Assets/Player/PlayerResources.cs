@@ -5,19 +5,12 @@ using UnityEngine.UI;
 
 public class PlayerResources : MonoBehaviour
 {
-    public static PlayerResources instance;
     [Header("Player resources")]
-    public int GoldAmount = 0;
-    public int WoodAmount = 0;
+    public int GoldAmount = 500;
+    public int WoodAmount = 500;
     [Header("UI references")]
     public Text UIgoldText;
     public Text UItreeText;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        instance = this;
-    }
 
     public void addGold(int amount)
     {
