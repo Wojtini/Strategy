@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
 
 namespace RTS_Cam
 {
     [RequireComponent(typeof(Camera))]
     [AddComponentMenu("RTS Camera")]
-    public class RTS_Camera : MonoBehaviour
+    public class RTS_Camera : NetworkBehaviour
     {
 
         #region Foldouts
@@ -172,12 +173,16 @@ namespace RTS_Cam
 
         private void Update()
         {
+            if (!base.isLocalPlayer)
+                return;
             if (!useFixedUpdate)
                 CameraUpdate();
         }
 
         private void FixedUpdate()
         {
+            if (!base.isLocalPlayer)
+                return;
             if (useFixedUpdate)
                 CameraUpdate();
         }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class ConstructAbility : Ability
 {
@@ -15,6 +16,7 @@ public class ConstructAbility : Ability
     {
         GameObject newBuilding = Instantiate(building);
         newBuilding.transform.position = target;
+        NetworkServer.Spawn(newBuilding);
         Building newBuildingComp = newBuilding.GetComponent<Building>();
         newBuildingComp.SetOwner(playerControl, factionCasted);
         newBuildingComp.healthPoints = 1;

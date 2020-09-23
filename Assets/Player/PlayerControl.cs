@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.EventSystems;
 
-public class PlayerControl : MonoBehaviour
+public class PlayerControl : NetworkBehaviour
 {
 
     public static List<Unit> allUnits = new List<Unit>();
@@ -29,10 +30,19 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cam = GetComponent<Camera>();
-        this.transform.eulerAngles = new Vector3(50f,0f,0f);
+        //cam = GetComponent<Camera>();
+        this.transform.eulerAngles = new Vector3(50f, 0f, 0f);
         selection = GetComponent<Selection>();
         playerResources = GetComponent<PlayerResources>();
+    }
+
+    public override void OnStartLocalPlayer()
+    {
+        base.OnStartLocalPlayer();
+        cam.enabled = true;
+
+        // you can use this function to do things like create camera, audio listeners, etc.
+        // so things which has to be done only for our player
     }
 
     // Update is called once per frame
