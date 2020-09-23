@@ -11,12 +11,16 @@ public class UI_ObjectSlot : MonoBehaviour
 
     public Slider hpBar;
 
+    public Selection selection;
+    public UI_MainSelect mainSelect;
     public void Awake()
     {
         button = GetComponent<Button>();
         image = button.image;
         button.onClick.AddListener(ButtonPress);
         hpBar = GetComponentInChildren<Slider>();
+        selection = GetComponentInParent<Selection>();
+        mainSelect = GetComponentInParent<UI_MainSelect>();
     }
 
     public void Update()
@@ -29,7 +33,7 @@ public class UI_ObjectSlot : MonoBehaviour
         if(obj != null)
         {
             float hp = (float) obj.healthPoints / (float) obj.maxhealthPoints;
-            Debug.Log(hp);
+            //Debug.Log(hp);
             hpBar.value = hp;
             hpBar.gameObject.SetActive(true);
         }
@@ -55,13 +59,13 @@ public class UI_ObjectSlot : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftControl))
         {
-            Selection.instance.RemoveObject(obj);
+            selection.RemoveObject(obj);
         }
         else
         {
             if (obj != null)
             {
-                UI_MainSelect.instance.SetUnit(obj);
+                mainSelect.SetUnit(obj);
             }
         }
     }

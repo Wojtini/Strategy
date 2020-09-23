@@ -11,8 +11,8 @@ public class Selection : MonoBehaviour
     public List<Object> firstGroup = new List<Object>();
     public List<Object> secondGroup = new List<Object>();
     public List<List<Object>> allGroups = new List<List<Object>>();
-
-    public static Selection instance;
+    
+    public PlayerControl playerControl;
 
     public List<Object> selectedObjects = new List<Object>();
     //For unwanted selectionbox spawn
@@ -26,14 +26,14 @@ public class Selection : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
         allGroups.Add(firstGroup);
         allGroups.Add(secondGroup);
+        playerControl = GetComponent<PlayerControl>();
     }
 
     public void Update()
     {
-        if (PlayerControl.instance.currentAbility != null || PlayerControl.instance.usedAbilityPreviousFrame)
+        if (playerControl.currentAbility != null || playerControl.usedAbilityPreviousFrame)
         {
             return;
         }
@@ -54,7 +54,7 @@ public class Selection : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Object pom = PlayerControl.instance.GetObjectUnderCursor();
+            Object pom = playerControl.GetObjectUnderCursor();
             if (pom != null)
             {
                 if (Input.GetKey(KeyCode.LeftShift))
@@ -117,14 +117,14 @@ public class Selection : MonoBehaviour
 
             if (!Input.GetKey(KeyCode.LeftShift))
             {
-                Selection.instance.ClearSelection();
+                ClearSelection();
             }
             foreach (Unit unit in PlayerControl.allUnits)
             {
                 Vector3 screenpos = Camera.main.WorldToScreenPoint(unit.transform.position);
                 if (screenpos.x > min.x && screenpos.x < max.x && screenpos.y > min.y && screenpos.y < max.y)
                 {
-                    Selection.instance.AddObject(unit);
+                    AddObject(unit);
 
                 }
             }
@@ -192,7 +192,7 @@ public class Selection : MonoBehaviour
 
     public void RemoveObjectFromSelections(Object obj)
     {
-        Selection.instance.RemoveObject(obj);
+        RemoveObject(obj);
     }
 
     public void AddObject(Object obj)

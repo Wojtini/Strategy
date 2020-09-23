@@ -14,10 +14,11 @@ public class Object : MonoBehaviour
     public string description = "DESC PLACEHOLDER";
     public Sprite icon;
     public string Faction = "NONE";
+    public PlayerControl playerControl;
     public float size = 0f;
     
     //public bool isSelected = false;
-
+    
     [Header("Object Stats")]
     public int maxhealthPoints = 1;
     public int healthPoints = 1;
@@ -29,6 +30,12 @@ public class Object : MonoBehaviour
     virtual public void Start()
     {
         Map.instance.onObjectSpawn(this);
+    }
+
+    public void SetOwner(PlayerControl playerControl,string Faction)
+    {
+        this.Faction = Faction;
+        this.playerControl = playerControl;
     }
 
     void OnDrawGizmosSelected()
@@ -54,7 +61,11 @@ public class Object : MonoBehaviour
     {
         Map.instance.onObjectDestroy(this);
         clearTaskList();
-        Selection.instance.RemoveObjectFromSelections(this);
+        Selection[] selections = FindObjectsOfType<Selection>();
+        foreach(Selection selection in selections)
+        {
+            selection.RemoveObjectFromSelections(this);
+        }
         Destroy(gameObject);
     }
 
@@ -65,7 +76,6 @@ public class Object : MonoBehaviour
         {
             Destroy();
         }
-        UI_MainSelect.instance.UpdateUnit();
     }
 
     virtual public void healDamage(int amount)
@@ -75,7 +85,6 @@ public class Object : MonoBehaviour
         {
             healthPoints = maxhealthPoints;
         }
-        UI_MainSelect.instance.UpdateUnit();
     }
 
     virtual public void addTask(Ability ability,int priority = -1)
@@ -121,19 +130,19 @@ public class Object : MonoBehaviour
         foreach(Ability reqAbility in ability.requiredAbilities)
         {
             bool foundAbility = false;
-            //Debug.Log("Sprawdzam czy unit zawiera: " + reqAbility.abilityName);
+            Debug.Log("Sprawdzam czy unit zawiera: " + reqAbility.abilityName);
             foreach(Ability availableAbility in this.abilities)
             {
-                //Debug.Log("Aktualne ability: " + availableAbility.abilityName);
+                Debug.Log("Aktualne ability: " + availableAbility.abilityName);
                 if (availableAbility.abilityName == reqAbility.abilityName)
                 {
-                    //Debug.Log("Znalazlem: " + availableAbility.abilityName);
+                    Debug.Log("Znalazlem: " + availableAbility.abilityName);
                     foundAbility = true;
                 }
             }
             if (!foundAbility)
             {
-                //Debug.Log("Nie znalazlem: " + reqAbility.abilityName);
+                Debug.Log("Nie znalazlem: " + reqAbility.abilityName);
                 return false;
             }
         }
@@ -141,22 +150,32 @@ public class Object : MonoBehaviour
         if (ability.requireBuilding)
         {
             if(!(this is Building))
+            {
+                Debug.Log("Obiekt nie jest budynkiem");
                 return false;
+            }
         }
         if (ability.requireUnit)
         {
             if (!(this is Unit))
+            {
+                Debug.Log("Obiekt nie jest unit");
                 return false;
+            }
         }
         if (ability.requireMobile)
         {
             if (!(this is Mobile))
+            {
+                Debug.Log("Obiekt nie jest mobile");
                 return false;
+            }
         }
         //Check Requirements Resources
-        PlayerResources PR = PlayerResources.instance;
+        PlayerResources PR = playerControl.playerResources;
         if (ability.woodRequirement > PR.WoodAmount || ability.goldRequirement > PR.GoldAmount)
         {
+            Debug.Log("Nie wystarczajace surowce");
             return false;
             //Not enough resources
         }

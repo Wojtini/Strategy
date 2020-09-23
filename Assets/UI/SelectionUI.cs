@@ -7,11 +7,14 @@ public class SelectionUI : MonoBehaviour
     public UI_ObjectSlot[] slots;
     public GameObject slotsParent;
     public Selection selection;
+
+    public UI_MainSelect mainSelect;
     // Start is called before the first frame update
     void Start()
     {
         slots = slotsParent.GetComponentsInChildren<UI_ObjectSlot>();
-        selection = Selection.instance;
+        //mainSelect.GetComponentInChildren<UI_MainSelect>();
+        selection = GetComponent<Selection>();
         selection.onItemSelectionChange += UpdateUI;
     }
     
@@ -19,11 +22,11 @@ public class SelectionUI : MonoBehaviour
     {
         if(selection.selectedObjects.Count != 0)
         {
-            UI_MainSelect.instance.SetUnit(selection.selectedObjects[0]);
+            mainSelect.SetUnit(selection.selectedObjects[0]);
         }
         else
         {
-            UI_MainSelect.instance.ClearUnit();
+            mainSelect.ClearUnit();
         }
         for(int i = 0; i < slots.Length; i++)
         {

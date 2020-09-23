@@ -7,11 +7,15 @@ public class UnitAbility : MonoBehaviour
 {
     public Ability ability = null;
     public Button button;
+    public PlayerControl playerControl;
+    public Selection selection;
 
     virtual public void Start()
     {
         button = GetComponent<Button>();
         button.onClick.AddListener(ButtonPress);
+        playerControl = GetComponentInParent<PlayerControl>();
+        selection = GetComponentInParent<Selection>();
     }
 
     public void SetSlot(Ability ab)
@@ -28,17 +32,17 @@ public class UnitAbility : MonoBehaviour
 
     public void ButtonPress()
     {
-        PlayerControl.instance.ClearCurrentAbility();
+        playerControl.ClearCurrentAbility();
         if (ability == null)
             return;
         if (ability.requireConfirmation)
         {
-            PlayerControl.instance.setAbility(ability);
+            playerControl.setAbility(ability);
         }
         else
         {
-            Ability newAbility = ability.CreateNewTask();
-            foreach (Object obj in Selection.instance.selectedObjects)
+            Ability newAbility = ability.CreateNewTask(playerControl);
+            foreach (Object obj in selection.selectedObjects)
             {
                 newAbility.setTarget(new Vector3(), null);
                 obj.addTask(Instantiate(newAbility));

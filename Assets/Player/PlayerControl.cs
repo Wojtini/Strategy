@@ -5,7 +5,6 @@ using UnityEngine.EventSystems;
 
 public class PlayerControl : MonoBehaviour
 {
-    public static PlayerControl instance;
 
     public static List<Unit> allUnits = new List<Unit>();
 
@@ -14,6 +13,9 @@ public class PlayerControl : MonoBehaviour
     public Camera cam;
     public bool usedAbilityPreviousFrame = false;
     public string PlayerFaction = "";
+
+    public Selection selection;
+    public PlayerResources playerResources;
 
     private GameObject abilityIndicator;
     public Ability currentAbility;
@@ -27,9 +29,10 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        instance = this;
         cam = GetComponent<Camera>();
         this.transform.eulerAngles = new Vector3(50f,0f,0f);
+        selection = GetComponent<Selection>();
+        playerResources = GetComponent<PlayerResources>();
     }
 
     // Update is called once per frame
@@ -67,30 +70,30 @@ public class PlayerControl : MonoBehaviour
             Object obj = GetObjectUnderCursor();
             if (obj == null)
             {
-                Ability abilitycast = BasicMove.CreateNewTask();
+                Ability abilitycast = BasicMove.CreateNewTask(this);
                 ActivateAbility(abilitycast);
             }
             else
             {
                 if(obj.Faction == PlayerFaction)
                 {
-                    Ability abilitycast = BasicRepair.CreateNewTask();
+                    Ability abilitycast = BasicRepair.CreateNewTask(this);
                     ActivateAbility(abilitycast);
                 }
                 else if (obj.Faction == "RESOURCE")
                 {
-                    Ability abilitycast = BasicHarverst.CreateNewTask();
+                    Ability abilitycast = BasicHarverst.CreateNewTask(this);
                     ActivateAbility(abilitycast);
                 }
                 else
                 {
-                    Ability abilitycast = BasicAttack.CreateNewTask();
+                    Ability abilitycast = BasicAttack.CreateNewTask(this);
                     ActivateAbility(abilitycast);
                 }
             }
         }
     }
-
+    
     public void ClearCurrentAbility(Ability ability = null)
     {
         if (currentAbility != null)
@@ -112,7 +115,7 @@ public class PlayerControl : MonoBehaviour
 
     public void setAbility(Ability ability)
     {
-        currentAbility = ability.CreateNewTask();
+        currentAbility = ability.CreateNewTask(this);
         //Debug.Log(ability);
         //Debug.Log(ability.confirmationIndicator);
         if (ability.confirmationIndicator != null)
@@ -139,7 +142,7 @@ public class PlayerControl : MonoBehaviour
         usedAbilityPreviousFrame = true;
 
 
-        foreach (Object obj in Selection.instance.selectedObjects)
+        foreach (Object obj in selection.selectedObjects)
         {
             ability.setTarget(clickPos, clickObj);
 

@@ -6,7 +6,7 @@ public class Resource : Static
 {
     public int stock;
 
-    virtual public void Gather(int amount)
+    virtual public void Gather(PlayerResources playerresources,int amount)
     {
         stock -= amount;
     }
