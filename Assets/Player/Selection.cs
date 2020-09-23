@@ -54,7 +54,7 @@ public class Selection : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Object pom = GetObjectUnderCursor();
+            Object pom = PlayerControl.instance.GetObjectUnderCursor();
             if (pom != null)
             {
                 if (Input.GetKey(KeyCode.LeftShift))
@@ -83,22 +83,6 @@ public class Selection : MonoBehaviour
                 }
             }
         }
-    }
-
-    private Object GetObjectUnderCursor()
-    {
-        RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        if (Physics.Raycast(ray, out hit))
-        {
-            Object pom = hit.transform.GetComponent<Object>();
-            if (pom != null)
-            {
-                return pom;
-            }
-        }
-        return null;
     }
 
     private void SelectionBox()

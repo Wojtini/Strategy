@@ -28,7 +28,8 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         instance = this;
-        cam = Camera.main;
+        cam = GetComponent<Camera>();
+        this.transform.eulerAngles = new Vector3(50f,0f,0f);
     }
 
     // Update is called once per frame

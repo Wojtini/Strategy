@@ -102,6 +102,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3151874914449481297}
+  - component: {fileID: -704429502578256079}
+  - component: {fileID: 7753506384363817036}
+  - component: {fileID: 222882691177076749}
+  - component: {fileID: 8065677402884348719}
+  - component: {fileID: -3953231555496502422}
   m_Layer: 0
   m_Name: Flag
   m_TagString: Untagged
@@ -125,6 +130,112 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-704429502578256079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146825952144583531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b932e505eb14f6540a7f95660494fe9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GoldAmount: 0
+  WoodAmount: 0
+  UIgoldText: {fileID: 0}
+  UItreeText: {fileID: 0}
+--- !u!114 &7753506384363817036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146825952144583531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ac168b9f5de924e9bfabc2cbc2bb3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstGroup: []
+  secondGroup: []
+  selectedObjects: []
+  startPos: {x: 0, y: 0}
+  selectionRect: {fileID: 0}
+  selectionBoxSpawnTime: 0.1
+  timePressedButton: 0
+  isDrawingSelectBox: 0
+--- !u!114 &222882691177076749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146825952144583531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06ce84a009e42c345ae00c40a8e678b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSelectedObjects: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  cam: {fileID: 0}
+  usedAbilityPreviousFrame: 0
+  PlayerFaction: 
+  currentAbility: {fileID: 0}
+  BasicMove: {fileID: -1332759133705143441, guid: 1bf510db2ecf1f44db34992135da94bb,
+    type: 3}
+  BasicAttack: {fileID: 3583323636492807934, guid: 2e7e17bbc1dc009499c0709570bb81ac,
+    type: 3}
+  BasicRepair: {fileID: -5670708332041488207, guid: 06a5c7d8c7e545540a405fac2b94715a,
+    type: 3}
+  BasicHarverst: {fileID: 3382127970484482353, guid: a3d14e6d578c27848bcb409548df501c,
+    type: 3}
+--- !u!114 &8065677402884348719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146825952144583531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_BuildHeightMesh: 0
+  m_NavMeshData: {fileID: 0}
+--- !u!114 &-3953231555496502422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146825952144583531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14e508d1e88820c449d9ba8da1e33cf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allObjects: []
 --- !u!1 &5314754075968341836
 GameObject:
   m_ObjectHideFlags: 0
