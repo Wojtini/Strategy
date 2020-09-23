@@ -47,6 +47,8 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 6f36a1d66eb046e4e8e01ade7ec6340b, type: 3}
   requireConfirmation: 0
   confirmationIndicator: {fileID: 0}
+  playerControl: {fileID: 0}
+  factionCasted: 
   target: {x: 0, y: 0, z: 0}
   targetObject: {fileID: 0}
   requiredAbilities:
@@ -54,9 +56,11 @@ MonoBehaviour:
   requireMobile: 0
   requireUnit: 0
   requireBuilding: 0
-  goldRequirement: 10
-  woodRequirement: 10
+  goldRequirement: 0
+  woodRequirement: 0
   healthRequirement: 0
   manaRequirement: 0
   unitToRecruit: {fileID: 6282018038068913569, guid: 4943acc9535cc4b4596f51bada6e98b8,
     type: 3}
+  currentTime: 0
+  timeToRecruit: 0
