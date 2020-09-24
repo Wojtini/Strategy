@@ -13,11 +13,12 @@ public class RecruitmentAbility : Ability
         if(currentTime >= timeToRecruit)
         {
             Building building = (Building)obj;
-            GameObject newUnit = Instantiate(unitToRecruit);
-            Unit newUnitComp = newUnit.GetComponent<Unit>();
-            newUnitComp.SetOwner(playerControl, factionCasted);
-            newUnit.transform.position = building.spawnPoint.transform.position;
-            newUnit.transform.localScale = new Vector3(1f, 1f, 1f);
+            //GameObject newUnit = Instantiate(unitToRecruit);
+            //Unit newUnitComp = newUnit.GetComponent<Unit>();
+            //newUnitComp.SetOwner(factionCasted);
+            //newUnit.transform.position = building.spawnPoint.transform.position;
+
+            Player.localPlayer.SpawnObject(unitToRecruit, building.spawnPoint.transform.position, factionCasted);
             return true;
         }
         else

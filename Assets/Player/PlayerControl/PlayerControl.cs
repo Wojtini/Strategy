@@ -98,12 +98,12 @@ public class PlayerControl : MonoBehaviour
     {
         if (currentAbility != null)
         {
-            Destroy(currentAbility.gameObject);
+            //Destroy(currentAbility.gameObject);
             currentAbility = null;
         }
         else if(ability != null)
         {
-            Destroy(ability.gameObject);
+            //Destroy(ability.gameObject);
             ability = null;
         }
         if (abilityIndicator != null)
@@ -140,15 +140,39 @@ public class PlayerControl : MonoBehaviour
             return;
         }
         usedAbilityPreviousFrame = true;
-
+        //Zwykle ability
 
         foreach (Object obj in selection.selectedObjects)
         {
-            ability.setTarget(clickPos, clickObj);
+            if (!Input.GetKey(KeyCode.LeftControl))
+            {
+                if (!(obj is Building))
+                {
+                    obj.clearTaskList();
+                    //To commandem zrobic
+                }
+            }
 
+            //Od tego momentu command
+            //ability.setTarget(clickPos, clickObj);
             Ability newAbility = Instantiate(ability);
-            obj.addTask(newAbility);
-            newAbility.transform.parent = obj.transform;
+            //obj.addTask(newAbility);
+            if (!Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                //Player.localPlayer.ClearObjectsTask(obj.gameObject);
+            }
+            //TDo tego momentu command
+            if (clickObj == null)
+            {
+                Player.localPlayer.AddTaskToObject(obj.gameObject, newAbility.gameObject, clickPos, null);
+            }
+            else
+            {
+                Player.localPlayer.AddTaskToObject(obj.gameObject, newAbility.gameObject, clickPos, clickObj.gameObject);
+            }
+            Destroy(newAbility.gameObject, 4f);
+            // In player class maybe this will happen
+            //newAbility.transform.parent = obj.transform;
         }
         ClearCurrentAbility(ability);
     }

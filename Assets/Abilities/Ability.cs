@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class Ability : MonoBehaviour
+public class Ability : NetworkBehaviour
 {
     public string abilityName;
     public Sprite icon;
@@ -36,7 +36,7 @@ public class Ability : MonoBehaviour
     virtual public Ability CreateNewTask(PlayerControl playerControl)
     {
         setFaction(playerControl, playerControl.PlayerFaction);
-        return Instantiate(this);
+        return this;
     }
 
     virtual public void setTarget(Vector3 pos, Object obj)

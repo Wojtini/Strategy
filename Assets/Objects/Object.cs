@@ -13,17 +13,16 @@ public class Object : NetworkBehaviour
     public string description = "DESC PLACEHOLDER";
     public Sprite icon;
     public string Faction = "NONE";
-    public PlayerControl playerControl;
     public float size = 0f;
     
     //public bool isSelected = false;
     
     [Header("Object Stats")]
     public int maxhealthPoints = 1;
+    [SyncVar]
     public int healthPoints = 1;
     public int maxmanaPoints = 1;
     public int manaPoints = 1;
-
     public List<Ability> abilities = new List<Ability>();
 
     virtual public void Start()
@@ -31,10 +30,11 @@ public class Object : NetworkBehaviour
         Map.instance.onObjectSpawn(this);
     }
 
-    public void SetOwner(PlayerControl playerControl,string Faction)
+    public void SetOwner(string Faction)
     {
         this.Faction = Faction;
-        this.playerControl = playerControl;
+
+        //this.playerControl = playerControl;
     }
 
     void OnDrawGizmosSelected()
@@ -96,13 +96,6 @@ public class Object : NetworkBehaviour
             }
             else
             {
-                if (!Input.GetKey(KeyCode.LeftControl))
-                {
-                    if(!(this is Building))
-                    {
-                        this.clearTaskList();
-                    }
-                }
                 taskList.Add(ability);
                 Debug.Log("Dodano taska" + ability);
             }
@@ -129,19 +122,19 @@ public class Object : NetworkBehaviour
         foreach(Ability reqAbility in ability.requiredAbilities)
         {
             bool foundAbility = false;
-            Debug.Log("Sprawdzam czy unit zawiera: " + reqAbility.abilityName);
+            //Debug.Log("Sprawdzam czy unit zawiera: " + reqAbility.abilityName);
             foreach(Ability availableAbility in this.abilities)
             {
-                Debug.Log("Aktualne ability: " + availableAbility.abilityName);
+                //Debug.Log("Aktualne ability: " + availableAbility.abilityName);
                 if (availableAbility.abilityName == reqAbility.abilityName)
                 {
-                    Debug.Log("Znalazlem: " + availableAbility.abilityName);
+                    //Debug.Log("Znalazlem: " + availableAbility.abilityName);
                     foundAbility = true;
                 }
             }
             if (!foundAbility)
             {
-                Debug.Log("Nie znalazlem: " + reqAbility.abilityName);
+                //Debug.Log("Nie znalazlem: " + reqAbility.abilityName);
                 return false;
             }
         }
@@ -150,7 +143,7 @@ public class Object : NetworkBehaviour
         {
             if(!(this is Building))
             {
-                Debug.Log("Obiekt nie jest budynkiem");
+                //Debug.Log("Obiekt nie jest budynkiem");
                 return false;
             }
         }
@@ -158,7 +151,7 @@ public class Object : NetworkBehaviour
         {
             if (!(this is Unit))
             {
-                Debug.Log("Obiekt nie jest unit");
+                //Debug.Log("Obiekt nie jest unit");
                 return false;
             }
         }
@@ -166,12 +159,13 @@ public class Object : NetworkBehaviour
         {
             if (!(this is Mobile))
             {
-                Debug.Log("Obiekt nie jest mobile");
+                //Debug.Log("Obiekt nie jest mobile");
                 return false;
             }
         }
         //Check Requirements Resources
-        PlayerResources PR = playerControl.playerResources;
+        //PlayerResources PR = playerControl.playerResources;
+        PlayerResources PR = Player.localPlayer.playerResources;
         if (ability.woodRequirement > PR.WoodAmount || ability.goldRequirement > PR.GoldAmount)
         {
             Debug.Log("Nie wystarczajace surowce");

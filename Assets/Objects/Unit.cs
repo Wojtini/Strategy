@@ -85,7 +85,7 @@ public class Unit : Mobile
         if (attackCooldown <= 0)
         {
             Debug.Log("Harvestuje: " + obj);
-            obj.Gather(playerControl.playerResources,attackDamage);
+            obj.Gather(Player.localPlayer.playerResources,attackDamage);
             attackCooldown = attackSpeed;
             //Widoczki + blokowanie mozliwosci ruchu podczas i w trakcie trwania cd ataku
             agent.speed = 0;

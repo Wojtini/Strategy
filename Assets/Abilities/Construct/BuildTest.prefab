@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9516f12436be63543beca2397241e81e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityName: 
+  abilityName: Build Ability
   icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   requireConfirmation: 1
   confirmationIndicator: {fileID: 703224448091482851, guid: 5c4b4b631426e7541ba77e9d80c63488,
